@@ -40,6 +40,7 @@ int main()
 		
 		cout<<"---HILL CLIMBING SEARCH---\n";
 		HillClimbing b;
+		b.solve("647850321","123456780","2");
 		for(int i = 0; i<20; i++)
 		{
 		 std::cout<<i<<": ";
