@@ -59,8 +59,77 @@ public:
 		return score;
 	}
 
+int manHatDist(int** matrixCurrent, int** matrixGoal)
+{
+	int total = 0;
+	for(int n = 1; n < 9; n++)
+	{
+		int x1, y1;
+		for(int i = 0; i < 3; i++)
+		{
+			for(int j = 0; j < 3; j++)
+			{
+				if(matrixCurrent[i][j] == n)
+				{
+					x1 = i;
+					y1 = j;
+				}
+			}
+
+		}
+
+		int x2, y2;
+		for(int i = 0; i < 3; i++)
+		{
+			for(int j = 0; j < 3; j++)
+			{
+				if(matrixGoal[i][j] == n)
+				{
+					x2 = i;
+					y2 = j;
+				}
+			}
+
+		}
+
+		x1 = x1 - x2;
+		y1 = y1 - y2;
+		if(x1 < 0)
+			x1 = x1 * (-1);
+		if(y1 < 0)
+			y1 = y1 * (-1);
+		cout<<"\n"<<x1<<" "<<y1<<endl;
+		
+		total = total + x1 + y1;
+	}
+	return total;
+
+}
+
 	void solve(std::string startS, std::string goalS, std::string minMoves)
 	{
+		//quick test
+		int** matrix1 = new int*[3];
+			for(int i = 0; i < 3; i++)
+			{
+				matrix1[i] = new int[3];
+			}
+			
+		int** matrix2 = new int*[3];
+			for(int i = 0; i < 3; i++)
+			{
+				matrix2[i] = new int[3];
+			}
+			
+		
+			
+			int l, m;
+			stringToMatrix(matrix1, startS,&l,&m);
+			stringToMatrix(matrix2, goalS,&l,&m);
+		cout<<"ex:"<< manHatDist(matrix1, matrix2)<<endl;
+		
+			
+		//
 		startStateInt = stoi(startS);
 		goalStateInt = stoi(goalS);
 		startState = startS;
